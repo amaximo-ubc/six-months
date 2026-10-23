@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Six months of us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--page:#FFFFFF;--ink:#24304C;--tint:url(images/paper-tint.webp);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#FFFFFF;--ink:#24304C;color-scheme:light}}
+:root[data-theme="dark"]{--page:#FFFFFF;--ink:#24304C;color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:"EB Garamond",Garamond,"Times New Roman",serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10vh 8vw;position:relative}
+.hero h1{margin:0;font-family:"Cormorant Garamond",Garamond,serif;font-weight:500;font-size:clamp(3rem,8.5vw,6.8rem);line-height:1;letter-spacing:-.01em}
+.hero .ul{display:block;width:min(560px,70vw);height:auto;margin:.4rem auto 0;overflow:visible}
+.hero p{margin:1.6rem 0 0;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-size:clamp(1.3rem,2.4vw,1.9rem)}
+.hero .when{margin-top:.5rem;opacity:.6;font-style:normal;font-size:clamp(.95rem,1.4vw,1.15rem);letter-spacing:.08em}
+.cue{position:absolute;bottom:6vh;left:50%;transform:translateX(-50%);font-size:.95rem;letter-spacing:.12em;opacity:.55;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,8px)}}
+/* ---------- month chapters ---------- */
+.month{position:relative;color:var(--ink);padding:16vh 7vw 20vh}
+#wall{position:relative;background:#fff}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);column-gap:6vw;align-items:center;max-width:1400px;margin:0 auto}
+.month.flip .grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.month.flip .col{order:-1}
+.txt{position:relative;display:flex;flex-direction:column;gap:0}
+.txt.row{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:3vw;align-items:center}
+.txt.row .polas{margin:0}
+.head{position:relative}
+.dymo{display:inline-block;background:linear-gradient(#2a2a2c,#121214);color:#F2F2EE;font-family:"Overpass Mono",ui-monospace,monospace;font-weight:700;font-size:clamp(1rem,1.5vw,1.35rem);letter-spacing:.22em;padding:.45em .8em .4em .95em;border-radius:5px;box-shadow:0 3px 8px rgba(0,0,0,.3);text-shadow:0 -1px 0 rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.3)}
+.dymo.red{background:linear-gradient(#B8262E,#8E1A21)}.dymo.blue{background:linear-gradient(#2B4FA0,#1C3878)}.dymo.green{background:linear-gradient(#2E6B45,#1E4D30)}.dymo.purple{background:linear-gradient(#5B3A8F,#3F2668)}
+.date{display:block;margin:0;color:var(--acc);font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-weight:700;font-size:clamp(1.5rem,2.3vw,2.1rem);line-height:1.1}
+.note{margin:1.3rem 0 0;font-size:clamp(1.02rem,1.22vw,1.2rem);line-height:1.72;max-width:44ch}
+.note p{margin:0 0 .95em}
+.note p:last-child{margin-bottom:0}
+.polas{display:flex;gap:2.4vw;margin:2.6rem 0 0}
+.pola{position:relative;width:clamp(130px,13vw,200px);background:#FBF9F3;padding:8px 8px 0;border:0;font:inherit;color:#24304C;text-align:center;cursor:pointer;box-shadow:0 1px 2px rgba(30,15,10,.3),0 10px 22px rgba(30,15,10,.18)}
+
+.pola video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#bbb}
+.pola .cap{display:block;font-style:italic;font-size:1rem;line-height:1.1;padding:8px 0 1px}
+.pola .snd{display:block;font-size:.75rem;opacity:.6;padding-bottom:8px}
+.pola:focus-visible{outline:2px dashed currentColor;outline-offset:4px}
+.tape{position:absolute;width:58%;left:50%;top:-12px;transform:translateX(-50%) rotate(var(--tr,-6deg));pointer-events:none}
+.col{margin:0;position:relative;width:100%;max-width:min(640px,66vh);justify-self:center}
+.col img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;box-shadow:0 3px 6px rgba(0,0,0,.18),0 22px 44px rgba(0,0,0,.2)}
+.doo{position:absolute;overflow:visible;pointer-events:none}
+.doo path{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s ease var(--dd,0s)}
+.doo.in path{stroke-dashoffset:0}
+/* entrances */
+.js .rv{opacity:0;will-change:transform,opacity}
+.js .card.rv{transform:translateX(var(--fromx,40vw)) translateY(10vh) rotate(var(--fromr,16deg)) scale(.85)}
+.js .dymo.rv{transform:scale(2.6) rotate(-28deg)}
+.js .date.rv{transform:translateX(-30px)}
+.js .pola.rv{transform:translateY(-70vh) rotate(-14deg)}
+.js .rv.in{opacity:1}
+.js .card.rv.in{transform:none;transition:transform 1.25s cubic-bezier(.18,.9,.22,1.08),opacity .5s ease}
+.js .dymo.rv.in{transform:rotate(var(--lr,-2deg));transition:transform .55s cubic-bezier(.3,1.6,.5,1),opacity .2s ease}
+.js .date.rv.in{transform:none;transition:transform .7s ease,opacity .7s ease}
+.js .pola.rv.in{transform:none;transition:transform 1s cubic-bezier(.25,1.35,.4,1) var(--pd,0s),opacity .3s ease var(--pd,0s)}
+.js .note .w{opacity:0;transform:translateY(.5em);filter:blur(3px)}
+.js .note.in .w{opacity:1;transform:none;filter:none;transition:opacity .4s ease var(--wd,0s),transform .5s ease var(--wd,0s),filter .4s ease var(--wd,0s)}
+.w{display:inline-block}
+.intro{display:flex;justify-content:center;padding:6vh 8vw 26vh}
+.intro .inner{max-width:38rem}
+.intro h2{margin:0 0 1.8rem;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-weight:500;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.1}
+.intro p{margin:0 0 1.3em;font-size:clamp(1.06rem,1.3vw,1.24rem);line-height:1.8}
+.js .fade{opacity:0;transform:translateY(22px)}
+.js .fade.in{opacity:1;transform:none;transition:opacity 1s ease,transform 1s ease}
+/* ---------- end ---------- */
+.end{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10vh 8vw;position:relative}
+
+.end h2{margin:0;max-width:18ch;line-height:1.15;font-family:"Cormorant Garamond",Garamond,serif;font-style:italic;font-weight:500;font-size:clamp(2.4rem,6vw,4.8rem)}
+.end p{margin:1.2rem 0 0;font-size:clamp(1.08rem,1.6vw,1.3rem);max-width:38ch;line-height:1.7}
+.end .hearts{width:min(240px,50vw);height:auto;margin-bottom:1rem;overflow:visible}
+/* ---------- small screens ---------- */
+@media (max-width:820px){
+.month{padding:14vh 7vw 16vh}
+.grid,.month.flip .grid{display:flex;flex-direction:column;gap:7vh}
+.month.flip .col{order:0}
+.note{margin-top:0}
+.polas{margin:0;justify-content:center;gap:5vw}
+.pola{width:38vw}
+.js .card.rv{transform:translateX(var(--fromx,40vw)) rotate(var(--fromr,16deg)) scale(.85)}
+}
+@media (prefers-reduced-motion:reduce){.cue{animation:none}.js .rv,.js .fade,.js .note .w{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}.doo path{stroke-dashoffset:0;transition:none}}
+</style>
+</head>
+<body>
+<div id="wall">
+<header class="hero">
+<h1>Six months of us</h1>
+<svg class="ul" viewBox="0 0 560 24" aria-hidden="true"><path id="ulp" pathLength="1" d="" stroke="#24304C" stroke-width="1.2" fill="none" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s ease .4s"></path></svg>
+<p>for Arissa</p>
+<p class="when">April 22 – October 22</p>
+<div class="cue" aria-hidden="true">scroll</div>
+</header>
+<section class="intro" id="intro"><div class="inner"><h2 class="fade">Hi baby, happy six months!!</h2><p class="fade">Part of me feels like the time has flown by, and another part feels like I’ve been dating you for years and six months is way too little. Go figure. It’s weird to think there was a time we weren’t dating, let alone a time when we didn’t even know each other.</p><p class="fade">I know it’s corny but, genuinely, I can’t imagine my life without you. You bring so much joy and laughter and love to the mundane. It’s like when I met you someone made the colors brighter, or turned up the music in my ears. I guess that’s just what happens when you’re in love.</p><p class="fade">Anyway, I made this little website to celebrate us. It’s very… outside of my comfort zone kkkkkk, but I know how much you love scrolling through your camera roll, so I thought I’d make you a little memory lane for the past six months. I hope you like it!</p></div></section>
+<main id="story"></main>
+<footer class="end" id="end">
+<h2>Happy six months, amor, and to many many many more.</h2>
+<p style="font-family:'Cormorant Garamond',Garamond,serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.4rem);margin-top:1.4rem">Eu te amo, linda. Muah!</p>
+</footer>
+</div>
+<script>
+const COLLAGE=["images/collage-1.webp","images/collage-2.webp","images/collage-3.webp","images/collage-4.webp","images/collage-5.webp","images/collage-6.webp"];
+const TAPE={pink:"images/tape-pink.webp",blue:"images/tape-blue.webp"};
+const VID={nails:{src:"video/nails.mp4",poster:"images/nails-poster.jpg",cap:"our nails!!"},forest:{src:"video/forest.mp4",poster:"images/forest-poster.jpg",cap:"in the forest"},beach:{src:"video/beach.mp4",poster:"images/beach-poster.jpg",cap:"at the beach"}};
+const MONTHS=[
+{label:"MONTH ONE",dymo:"red",bg:"#090909",edge:"#090909",ink:"#F4F1EA",acc:"#F2B33D",heart:"#F7A8C4",lr:-3,dr:-2.5,dx:"1.2rem",nr:-1,cr:-1.2,
+ dates:"April 22 – May 22",note:["After much waiting around for that record to come in the mail (and a little bit of peer pressure from Jaskeerat), I caved and asked you to be my girlfriend in front of the *very romantic* law library. That same day we had both started our Duolingo courses, and I was already thinking of how to tell you nakupenda.", "We also got my bike and went on that ride around Chancellor Blvd, did the Grouse Grind, and I got a ton of pictures of you from your trips to Paris and Toronto. You somehow looked more stunning in each new one. I couldn’t believe how lucky I was to call you mine."],vids:[],
+ doo:[["star",92,-6,26,"ink"],["heart",78,-10,22,"heart"],["arrow",8,96,70,"acc"],["spiral",86,92,34,"ink"]]},
+{label:"MONTH TWO",dymo:"",bg:"linear-gradient(180deg,#8481D8,#7470C8 55%,#625AAE)",edge:"#8481D8",ink:"#FFFDF7",acc:"#FFE14D",heart:"#FFD1E3",lr:2,dr:1.5,dx:"0",nr:1,cr:1.4,
+ dates:"May 22 – June 22",note:["You were still in Toronto for some of this, but when you came back we really made the most of it. We started sleeping together every night and settling into a shared routine. We did our corniest couple’s activity to date: painting our nails to match each other’s eyes.", "You met my friends and I started getting closer to yours! We went on the hike to Tunnel Bluffs and I took a bunch of pictures of you that are pure gold kkkkkk."],vids:["nails"],
+ doo:[["star",90,-8,24,"acc"],["heart",76,-12,20,"heart"],["loop",48,104,90,"ink"]]},
+{label:"MONTH THREE",dymo:"blue",bg:"#FFFFFF",edge:"#FFFFFF",ink:"#1F3A6B",acc:"#D7262E",heart:"#D9342B",lr:-1.2,dr:-1,dx:"1.6rem",nr:-.6,cr:-.8,
+ dates:"June 22 – July 22",note:["After almost dying at Golden Ears Panorama Ridge, we came back with a newfound appreciation for comfortable dates LOL. I will always remember being on top of that mountain with the wind blowing against our tent, soaking wet and shivering uncontrollably, and then you look at me and say: “maybe next time we just watch a movie” KKKKKKK.", "This month we also went to a ton of FIFA games thanks to Smit, and on a really cute day trip to Steveston."],vids:["forest","beach"],
+ doo:[["star",92,-8,22,"ink"],["heart",78,-12,20,"heart"]]},
+{label:"MONTH FOUR",dymo:"",bg:"linear-gradient(180deg,#DC4421 0%,#E97A4C 19%,#F2986E 31%,#F4AE92 44%,#E79AB5 62%,#C3709C 81%,#B34785 100%)",edge:"#DC4421",ink:"#FFF6EC",acc:"#7A1347",heart:"#FFD0E6",lr:2.4,dr:2,dx:"0",nr:1.2,cr:1,
+ dates:"July 22 – August 22",note:["We started our fourth month with you getting me a very lesbian-coded cake. Which was perfectly on theme, cause it was PRIDE BABYYYYY! We went to the Dyke March and also to “normal” Pride, and got a much-needed remake of last year.", "In the spirit of second chances, we also gave Panorama Ridge another try (never mind that it was a different Panorama Ridge), and this time it was a complete hypothermia-free success. Hooray!"],vids:[],
+ doo:[["star",-6,-8,24,"ink"],["heart",4,100,40,"heart"],["heart",16,112,18,"ink"],["arrow",30,98,80,"ink"]]},
+{label:"MONTH FIVE",dymo:"green",bg:"#FFFFFF",edge:"#FFFFFF",ink:"#2F4A22",acc:"#3E7B27",heart:"#D9546E",lr:-1.6,dr:-1.4,dx:"1rem",nr:-.8,cr:-1,
+ dates:"August 22 – September 22",note:["This month was full of trips: the Sunshine Coast and then Seattle. There was lots of eating and sightseeing and geese that don’t respect your personal boundaries (“you’re stepping on my toes bro”).", "It was also my birthday, and you celebrated it like it only happens once in a lifetime. As if the TWO trips weren’t enough, you still baked me a really yummy cake, gave me a super nice bag, and handmade me a card that I will cherish for life.", "I’ve never been a big birthday person, and I think part of that comes from a fear of being disappointed. Like, what if I make my birthday a big deal and no one really cares, you know? Well, I think you healed some of that this year, because I’ve truly never felt so celebrated. Thank you, baby."],vids:[],
+ doo:[["star",88,96,30,"acc"],["star",78,110,16,"acc"],["star",96,116,12,"ink"],["heart",6,102,34,"heart"],["loop",30,-12,90,"ink"]]},
+{label:"MONTH SIX",dymo:"purple",bg:"#FFEEC7",edge:"#FFEEC7",ink:"#4A2A14",acc:"#2F5DA8",heart:"#C8442E",lr:1.2,dr:1,dx:".6rem",nr:.8,cr:.8,
+ dates:"September 22 – October 22",note:["It feels weird to write about the time we’re in right now because, well, it just happened lol. But if you think about it, this month was really special too: we got matching pajamas, walked around sooo much, and ate an abnormal amount of good food, even for us (biryani, braised beef, gnocchi, sushi hmmm).", "Even though it’s peak fall and everything is really pretty right now, I’m already thinking of the winter ahead, but with a lot less dread than usual. When I think of the cold now, my mind starts to drift to you, to us: at home, with the heater on full blast, having some soup, or watching Glee while (finally) making our beaded flowers. I actually can’t wait.", "You just have this way of making me excited for the future, something that was so rare for me in the past. To me, any future with you sounds amazing, and any city with you in it sounds warm."],vids:[],
+ doo:[["heart",82,98,42,"heart"],["heart",95,90,20,"acc"],["heart",72,114,16,"heart"],["star",4,104,26,"acc"]]}
+];
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- hand-drawn paths ---------- */
+let seed=11;const R=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};
+const pathOf=pts=>'M'+pts.map(p=>(p[0]+(R()-.5)*.7).toFixed(1)+' '+(p[1]+(R()-.5)*.7).toFixed(1)).join(' L');
+const sample=(fn,n)=>{const p=[];for(let i=0;i<=n;i++)p.push(fn(i/n));return p};
+const SHAPES={
+  heart:{vb:[60,60],d:()=>[pathOf(sample(t=>{const a=t*Math.PI*2;return[30+22*Math.pow(Math.sin(a),3),31-22*(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a))/16]},70))]},
+  star:{vb:[50,50],d:()=>[pathOf([[25,5],[25,45]]),pathOf([[5,25],[45,25]]),pathOf([[11,11],[39,39]]),pathOf([[39,11],[11,39]])]},
+  spiral:{vb:[60,60],d:()=>[pathOf(sample(t=>{const a=t*Math.PI*5;return[30+Math.cos(a)*26*t,30+Math.sin(a)*26*t]},90))]},
+  loop:{vb:[120,40],d:()=>[pathOf(sample(t=>[10+t*100+Math.sin(t*Math.PI*6)*5,20-Math.cos(t*Math.PI*6)*5+t*3],110))]},
+  arrow:{vb:[100,100],d:()=>{const c=sample(t=>[(1-t)*(1-t)*12+2*(1-t)*t*72+t*t*88,(1-t)*(1-t)*15+2*(1-t)*t*20+t*t*85],40);return[pathOf(c),pathOf([[76,78],[88,85],[90,72]])]}}
+};
+function doodleSVG(t,x,y,w,color){const s=SHAPES[t];const sw=(1.7*s.vb[0]/w).toFixed(2);
+  return `<svg class="doo" viewBox="0 0 ${s.vb[0]} ${s.vb[1]}" style="left:${x}%;top:${y}%;width:${w}px" aria-hidden="true">${s.d().map(d=>`<path pathLength="1" d="${d}" stroke="${color}" stroke-width="${sw}"/>`).join('')}</svg>`}
+
+/* ---------- build ---------- */
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function words(text,sd){let it=false;return String(text).split(/(\s+)/).map(w=>{if(/^\s+$/.test(w))return w;let open=false,close=false;if(w.startsWith('*')){it=true;w=w.slice(1)}if(w.endsWith('*')){close=true;w=w.slice(0,-1)}const s=`<span class="w"${it?' style="font-style:italic"':''}>${esc(w)}</span>`;if(close)it=false;return s}).join('')}
+const TORN=(()=>{let s=5;const r=()=>{s=(s*16807)%2147483647;return(s-1)/2147483646};let d='M0 100 L0 ';const pts=[];for(let x=0;x<=1000;x+=8)pts.push(`${x} ${(40+r()*45).toFixed(0)}`);
+  return `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'><path d='M0 100 L${pts.join(' L')} L1000 100 Z'/></svg>`)}")`})();
+document.documentElement.style.setProperty('--torn',TORN);
+const story=document.getElementById('story');
+MONTHS.forEach((m,i)=>{
+  const sec=document.createElement('section');sec.className='month'+(i%2?' flip':'');
+  sec.style.cssText=`${m.bg==='#FFFFFF'?'':'--tex:var(--tint);'}--bg:${m.bg};--edge:${m.edge};--ink:${m.ink};--acc:${m.acc};--lr:${m.lr}deg;--dr:${m.dr}deg;--dx:${m.dx};--nr:${m.nr}deg;--cr:${m.cr}deg`;
+  sec.setAttribute('aria-label',m.label.toLowerCase());
+  const vids=m.vids.map((k,j)=>{const v=VID[k];return`<div class="pola" role="button" tabindex="0" style="--tr:${j?'4deg':'-4deg'}" aria-label="Video: ${esc(v.cap)}. Tap for sound"><img class="tape" src="${j?TAPE.blue:TAPE.pink}" alt=""><video muted loop playsinline preload="metadata" poster="${v.poster}" src="${v.src}"></video><span class="cap">${esc(v.cap)}</span><span class="snd">tap for sound</span></div>`}).join('');
+  sec.style.setProperty('--fromx',(i%2?'-45vw':'45vw'));sec.style.setProperty('--fromr',(i%2?'-18deg':'16deg'));
+  sec.innerHTML=`<div class="grid"><div class="txt${m.vids.length===1?' row':''}"><div class="words"><div class="head"><span class="date rv">${words(m.dates,i+40)}</span></div><div class="note">${m.note.map((p,pi)=>`<p>${words(p,i*10+pi)}</p>`).join('')}</div></div>${vids?`<div class="polas">${vids}</div>`:''}</div><figure class="col"><div class="card rv"><img src="${COLLAGE[i]}" alt="Collage for ${m.label.toLowerCase()}"></div></figure></div>`;
+  sec.querySelectorAll('.note .w').forEach((w,k)=>w.style.setProperty('--wd',Math.min(k*0.02,2.4).toFixed(2)+'s'));
+  sec.querySelectorAll('.pola').forEach((p,k)=>{p.classList.add('rv');p.style.setProperty('--pd',(k*.25)+'s')});
+  story.appendChild(sec);
+  sec.querySelectorAll('.pola').forEach(b=>{const vid=b.querySelector('video');const toggle=()=>{vid.muted=!vid.muted;if(vid.paused)vid.play().catch(()=>{});b.querySelector('.snd').textContent=vid.muted?'tap for sound':'sound on'};
+    b.addEventListener('click',toggle);b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}})});
+});
+document.querySelector('.hero .ul path').setAttribute('d','M180 12 L380 12');
+const hs=document.createElementNS('http://www.w3.org/2000/svg','svg');
+hs.innerHTML=[[120,64,40,'#B2304A'],[178,44,20,'#E07B39'],[64,48,16,'#8481D8']].map(([x,y,sz,c])=>`<path pathLength="1" d="${pathOf(sample(t=>{const a=t*Math.PI*2;return[x+sz*Math.pow(Math.sin(a),3),y-sz*(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a))/16]},70))}" stroke="${c}" stroke-width="2.2" fill="none" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:var(--d,0)"/>`).join('');
+
+
+/* ---------- one continuous background ---------- */
+const STOPS=[["#FFFFFF"],["#FFFFFF"],["#090909"],["#8481D8","#7470C8","#625AAE"],["#FFFFFF"],["#DC4421","#E97A4C","#F2986E","#F4AE92","#E79AB5","#C3709C","#B34785"],["#FFFFFF"],["#FFEEC7"],["#FFFFFF"]];
+function paintWall(){const wall=document.getElementById('wall');const parts=[document.querySelector('.hero'),document.getElementById('intro'),...document.querySelectorAll('.month'),document.getElementById('end')];
+  const base=wall.getBoundingClientRect().top+scrollY;const out=[];
+  parts.forEach((el,i)=>{const r=el.getBoundingClientRect(),T=r.top+scrollY-base,H=r.height;const F=Math.min(H*.22,320);const cs=STOPS[i];
+    const a=i===0?0:T+F,b=i===parts.length-1?T+H:T+H-F;
+    if(cs.length===1){out.push(`${cs[0]} ${a.toFixed(0)}px`,`${cs[0]} ${b.toFixed(0)}px`)}
+    else cs.forEach((c,k)=>out.push(`${c} ${(a+(b-a)*k/(cs.length-1)).toFixed(0)}px`))});
+  wall.style.background=`linear-gradient(180deg,${out.join(',')})`}
+paintWall();addEventListener('resize',()=>requestAnimationFrame(paintWall));addEventListener('load',paintWall);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(paintWall);
+document.querySelectorAll('img').forEach(im=>im.complete||im.addEventListener('load',paintWall,{once:true}));
+
+/* ---------- entrances ---------- */
+document.documentElement.classList.add('js');
+const reveal=n=>n.classList.add('in');
+const triggers=new Map();document.querySelectorAll('.rv,.note,.fade').forEach(n=>{const trg=n.classList.contains('rv')?n.parentElement:n;if(!triggers.has(trg))triggers.set(trg,[]);triggers.get(trg).push(n)});
+if(REDUCE||!('IntersectionObserver' in window)){triggers.forEach(list=>list.forEach(reveal))}
+else{const io=new IntersectionObserver(es=>es.forEach(e=>{const list=triggers.get(e.target);if(e.isIntersecting)list.forEach(reveal);else list.forEach(n=>n.classList.remove('in'))}),{threshold:.15,rootMargin:'0px 0px -10% 0px'});triggers.forEach((_,trg)=>io.observe(trg))}
+// videos: play while their polaroid is on screen
+const vio=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(e=>{const v=e.target.querySelector('video');if(e.isIntersecting)v.play().catch(()=>{});else v.pause()}),{threshold:.5}):null;
+document.querySelectorAll('.pola').forEach(p=>vio&&vio.observe(p));
+// end hearts + hero underline
+const hio=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(e=>{hs.style.setProperty('--d',e.isIntersecting?'0':'1')}),{threshold:.4}):null;
+hs.style.setProperty('--d',REDUCE?'0':'1');hs.querySelectorAll('path').forEach(p=>p.style.transition='stroke-dashoffset 1.4s ease');if(hio)hio.observe(hs);else hs.style.setProperty('--d','0');
+requestAnimationFrame(()=>requestAnimationFrame(()=>{document.getElementById('ulp').style.strokeDashoffset=0}));
+</script>
+</body>
+</html>
